@@ -96,8 +96,8 @@ export default function MapScreen() {
 
 
     const handleCheckout = async() => {
-      console.log("checkout")
-      console.log(cartItems)
+      // console.log("checkout")
+      // console.log(cartItems)
     setLoadingPayement(true)
 
       const payamentIntent = await axios.post('https://foodiex-backend.onrender.com/api/payement/',
@@ -137,6 +137,7 @@ export default function MapScreen() {
     }else{
       // console.log("success")
       // console.log(payementRes)
+      setLoadingPayement(true)
       setTotalPrice(0)
       setPreviousOrders(cartItems[0].restaurant_name)
       Alert.alert("Success", "Your order has been placed")
@@ -157,6 +158,7 @@ export default function MapScreen() {
       })
       // console.log(orders)
       clearCart()
+      setLoadingPayement(false)
       navigation.navigate("Home")
     }
   }

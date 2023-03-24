@@ -110,7 +110,7 @@ const HomeScreen = () => {
 
             <View style={{width:"90%", flexDirection:"row", justifyContent:"space-between", alignItems:"center", paddingVertical:10}}>
                 <Pressable style={{flexDirection:"row", justifyContent:"center", alignItems:"center"}}
-                     onPress={() => navigation.navigate('MapScreen')}
+                     onPress={() => navigation.navigate('OrderMapView')}
                 >
                     <Entypo name="location-pin" size={24} color="red" />
                     <Text style={{fontFamily:"Poppins-SemiBold", fontSize:16, color:"#e5e1d8"}}>Delivery</Text>

@@ -117,14 +117,12 @@ const ProfileScreen = () => {
           <Text style={{ fontFamily: "Poppins-SemiBold", fontSize: 15, color: "#e5e1d8" }}>{i18n.t("More")}</Text>
 
           <Pressable style={{ flexDirection: "row", justifyContent: "flex-start", alignItems: "center", gap: 10, marginBottom: 15 }}
-            onPress={() => navigation.navigate("OrderHistoryScreen")}
           >
             <Entypo name="info-with-circle" size={18} color="#ffad16" />
             <Text style={{ fontFamily: "Poppins-SemiBold", fontSize: 15, color: "#e5e1d8" }}>{i18n.t("about us")}</Text>
           </Pressable>
 
           <Pressable style={{ flexDirection: "row", justifyContent: "flex-start", alignItems: "center", marginBottom: 15, gap: 10 }}
-            onPress={() => navigation.navigate("FavouriteOrders")}
           >
             <MaterialIcons name="feedback" size={18} color="#ffad16" />
             <Text style={{ fontFamily: "Poppins-SemiBold", fontSize: 15, color: "#e5e1d8" }}>{i18n.t("send feedback")}</Text>

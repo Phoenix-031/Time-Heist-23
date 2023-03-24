@@ -23,6 +23,8 @@ import {
   LikedRestaurantsScreen,
   UserProfile,
   WriteReview,
+  OrderMapView,
+  OrderTrackingScreen,
  } from './src/screens';
 
 
@@ -379,6 +381,54 @@ const {user} = useStore((state) => ({
               }}
             />
             <Stack.Screen name="BookingOptionScreen" component={BookingOptionScreen}
+              options={{
+                headerShown: true,
+                header: ({ navigation, route }) => {
+                  // console.log(route, navigation)
+                  return (
+                    <View style={{
+                      backgroundColor: "#1c1c27",
+                      borderBottomWidth: 0,
+                      paddingHorizontal: 20,
+                      paddingTop: 20,
+                      flexDirection: "row",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
+                      gap: 6,
+                    }}>
+                      <Pressable
+                        onPress={() => navigation.goBack()}
+                      ><Entypo name="chevron-left" size={24} color="#e5e1d8" /></Pressable>
+                    </View>
+                  )
+                }
+              }}
+            />
+            <Stack.Screen name="OrderMapView" component={OrderMapView}
+              options={{
+                headerShown: true,
+                header: ({ navigation, route }) => {
+                  // console.log(route, navigation)
+                  return (
+                    <View style={{
+                      backgroundColor: "#1c1c27",
+                      borderBottomWidth: 0,
+                      paddingHorizontal: 20,
+                      paddingTop: 20,
+                      flexDirection: "row",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
+                      gap: 6,
+                    }}>
+                      <Pressable
+                        onPress={() => navigation.goBack()}
+                      ><Entypo name="chevron-left" size={24} color="#e5e1d8" /></Pressable>
+                    </View>
+                  )
+                }
+              }}
+            />
+            <Stack.Screen name="OrderTracking" component={OrderTrackingScreen}
               options={{
                 headerShown: true,
                 header: ({ navigation, route }) => {

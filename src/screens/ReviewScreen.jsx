@@ -1,9 +1,10 @@
-import { FlatList, ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { FlatList, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import React, { useEffect } from 'react'
+import { useState } from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { Searchbar, Button, Surface, Chip } from 'react-native-paper'
 import { useFonts } from 'expo-font'
-import { useNavigation } from '@react-navigation/native'
+import { useFocusEffect, useNavigation } from '@react-navigation/native'
 
 import { ReviewCard } from '../components'
 
@@ -35,6 +36,17 @@ const ReviewScreen = ({route}) => {
   const {restaurantReviews} = route.params
   const review_tags = ["Verified", "With Photos", "Latest", "Detailed", "Most Helpful"]
 
+  const [data, setData] = useState()
+  useFocusEffect(
+    React.useCallback(() => {
+      setData(restaurantReviews)
+    }, [])
+  )
+
+  useEffect(() => {
+    setData(restaurantReviews)
+  }, [])
+
       const [fontsLoaded] = useFonts({
         'Poppins-Regular': require('../../assets/fonts/Poppins-Regular.ttf'),
         'Poppins-SemiBold': require('../../assets/fonts/Poppins-SemiBold.ttf'),
@@ -55,6 +67,25 @@ const ReviewScreen = ({route}) => {
 
         <Searchbar />
 
+        <View style={{width:"100%", flexDirection:"row", justifyContent:"center", alignItems:"center", gap:12}}>
+          <TouchableOpacity style={{color:"white", borderWidth:1, borderColor:"green", borderRadius:12, paddingVertical:6, paddingHorizontal:12 ,fontFamily:"Poppins-Medium", fontSize:15, marginVertical:10}}
+          onPress={() => {
+            const newData = restaurantReviews.filter((item) => item.review_type === "Delivery")
+            setData(newData)
+          }}
+          >
+            <Text style={{color:"white", fontFamily:"Poppins-Medium", fontSize:15}}>Delivery</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={{color:"white", borderWidth:1, borderColor:"green", borderRadius:12, paddingVertical:6, paddingHorizontal:12 ,fontFamily:"Poppins-Medium", fontSize:15, marginVertical:10}}
+          onPress={() => {
+            const newData = restaurantReviews.filter((item) => item.review_type === "Dinning")
+            setData(newData)
+          }}
+          >
+            <Text style={{color:"white", fontFamily:"Poppins-Medium", fontSize:15}}>Dinning</Text>
+          </TouchableOpacity>
+        </View>
+
       <FlatList
       style={{width:"100%", marginVertical:10}}
         showsHorizontalScrollIndicator={false}
@@ -66,7 +97,7 @@ const ReviewScreen = ({route}) => {
 
 
       <FlatList
-        data={restaurantReviews}
+        data={data}
         renderItem={({item}) => <ReviewCard item={item} />}
         keyExtractor={item => item.id}
       />

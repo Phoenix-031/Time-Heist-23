@@ -3,6 +3,7 @@ export const restaurantReviews = [
         id: 1,
         username:"John Doe",
         review_description:"this is an example of a review description",
+        review_type:"Delivery",
         likes: 10,
         comments:[{
             id: 1,
@@ -43,6 +44,7 @@ export const restaurantReviews = [
         id: 2,
         username:"John Doe",
         review_description:"this is an example of a review description",
+        review_type:"Delivery",
         likes: 10,
         comments:[{
             id: 1,
@@ -68,6 +70,7 @@ export const restaurantReviews = [
         id: 3,
         username:"John Doe",
         review_description:"this is an example of a review description",
+        review_type:"Delivery",
         likes: 10,
         comments:[{
             id: 1,
@@ -93,6 +96,7 @@ export const restaurantReviews = [
         id: 4,
         username:"John Doe",
         review_description:"this is an example of a review description",
+        review_type:"Dinning",
         likes: 10,
         comments:[{
             id: 1,
@@ -118,6 +122,7 @@ export const restaurantReviews = [
         id: 5,
         username:"John Doe",
         review_description:"this is an example of a review description",
+        review_type:"Dinning",
         likes: 10,
         comments:[{
             id: 1,

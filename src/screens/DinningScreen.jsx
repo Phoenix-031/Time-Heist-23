@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, StyleSheet, StatusBar, ScrollView, Pressable, FlatList } from 'react-native'
+import { View, Text, StyleSheet, StatusBar, ScrollView, Pressable, FlatList, TouchableOpacity } from 'react-native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { Chip, Searchbar } from 'react-native-paper'
 import { useFonts } from 'expo-font'
@@ -58,6 +58,36 @@ const DiningScreen = () => {
     }
   }, [searchQuery])
 
+    useEffect(() => {
+        // console.log(filters)
+        if(filters.length > 0){
+            filters.map((item) => {
+                if(item === "Nearest"){
+                    const newData = data.filter((item) => item.distance <= 10)
+                    setData(newData)
+                }
+                if(item === "Rating 4.0+"){
+                    const newData = data.filter((item) => item.rating >= 4)
+                    setData(newData)
+                }
+                if(item === "Pure Veg"){
+                    const newData = data.filter((item) => item.special_tag === "Pure veg")
+                    setData(newData)
+                }
+                if(item == "New Arrivals"){
+                    const newData = data.filter((item) => item.arrival_tag === "New Arrivals")
+                    setData(newData)
+                }
+                if(item == "Previous Orders"){
+                    const newData = data.filter((item) => previous_orders.includes(item.restaurant_name))
+                    setData(newData)
+                }
+            })
+        }else{
+            setData(restaurantsList)
+        }
+    }, [filters])
+
 
       const [fontsLoaded] = useFonts({
         'Poppins-Regular': require('../../assets/fonts/Poppins-Regular.ttf'),
@@ -90,15 +120,9 @@ const DiningScreen = () => {
 
         <FlatList
           horizontal={true}
-          ListHeaderComponent={() => (
-            <Chip style={{ margin: 5, paddingHorizontal: 4, fontFamily: "Poppins-SemiBold", flexDirection: "row", justifyContent: "center", gap: 4 }}>
-              <Text>Sort </Text>
-              <AntDesign name="down" size={14} color="black" />
-            </Chip>
-          )}
           data={booking}
           renderItem={({ item }) => (
-              <Pressable style={{ borderRadius: 12, flex: 1, justifyContent: "center", alignItems: "center", margin: 5, paddingVertical: 0, borderWidth: 1, paddingHorizontal: 8, fontFamily: "Poppins-SemiBold", 
+              <TouchableOpacity style={{ borderRadius: 12, flex: 1, justifyContent: "center", alignItems: "center", margin: 5, paddingVertical: 5, borderWidth: 1, paddingHorizontal: 8, fontFamily: "Poppins-SemiBold", 
               borderColor: `${filters.includes(item) ? "red" : "green"}`
              }} 
               onPress={() => {
@@ -109,7 +133,7 @@ const DiningScreen = () => {
                   setFilters([...filters, item])
                 }
               }}><Text style={{ color: `${filters.includes(item) ? "red" : "green"}`, fontFamily: "Poppins-SemiBold" }}>{item}</Text>
-              </Pressable>
+              </TouchableOpacity>
           )}
           keyExtractor={(item) => item.toString()}
         />

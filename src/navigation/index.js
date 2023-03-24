@@ -105,7 +105,7 @@ const RootNavigator = () => {
                 }}
               />
 
-              <Tab.Screen
+              {/* <Tab.Screen
                 name="Delivery"
                 component={OrderScreenStack}
                 options={{
@@ -114,7 +114,7 @@ const RootNavigator = () => {
                     <MaterialIcons name="delivery-dining" size={35} color={color} />
                   )
                 }}
-              />
+              /> */}
             </>
           ) 
         }

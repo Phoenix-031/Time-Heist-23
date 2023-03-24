@@ -1,10 +1,15 @@
 import { StyleSheet, Text, View, Image, FlatList } from 'react-native'
 import React, { useState } from 'react'
 import { useFonts } from 'expo-font';
+import { Button } from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
+
 
 const OrderItems = ({item}) => {
     // console.log(item)
     // console.log(item.items[0].quantity)
+
+    const navigation = useNavigation()
 
     const [fontsLoaded] = useFonts({
         'Poppins-Regular': require('../../assets/fonts/Poppins-Regular.ttf'),
@@ -57,6 +62,9 @@ const OrderItems = ({item}) => {
 
             <View style={{flexDirection:"row", justifyContent:"space-between", alignItems:"center", width:"100%", paddingHorizontal:5}}>
                 <Text style={{fontFamily:"Poppins-SemiBold", fontSize:12,color:"white"}}>{item.date}</Text>
+                <Button mode='contained'
+                onPress={() => navigation.navigate('OrderTracking')}
+                >Track Order</Button>
                 <Text style={{fontFamily:"Poppins-SemiBold", fontSize:12,color:"white"}}>{item.time}</Text>
             </View>
         </View>
