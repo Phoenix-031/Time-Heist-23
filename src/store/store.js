@@ -18,6 +18,7 @@ const userSlice = (set) => ({
     previous_orders: [],
     setPreviousOrders: (restaurantName) => set((state) => ({ previous_orders: [...state.previous_orders, restaurantName] })),
     sortvalue:"",
+    setSortValue: (sortvalue) => set((state) => ({ sortvalue: sortvalue })),
     setOrder: (order) => set((state) => ({ orders: [...state.orders, order] })),
     allfilters: ["Nearest", "Rating 4.0+", "Pure Veg", "New Arrivals", "Previous Orders"],
     bookingfilter: ["Book Table", "Nearest", "Rating 4.0 + ", "Pure Veg", "New Arrivals", "Previous Orders"],

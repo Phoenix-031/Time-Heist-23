@@ -80,19 +80,20 @@ const RootNavigator = () => {
           )
         }}
       />
-      <Tab.Screen
-          name="Cart"
-          component={CartScreenStack}
-          options={{
-            tabBarLabel: "",
-            tabBarIcon: ({ color }) => (
-              <FontAwesome5 name="shopping-cart" size={22} color={color} />
-            ),
-          }}
-        />
         {
           user && (
             <>
+
+            <Tab.Screen
+                name="Cart"
+                component={CartScreenStack}
+                options={{
+                  tabBarLabel: "",
+                  tabBarIcon: ({ color }) => (
+                    <FontAwesome5 name="shopping-cart" size={22} color={color} />
+                  ),
+                }}
+              />
 
               <Tab.Screen
                 name="Profile"

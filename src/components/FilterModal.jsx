@@ -10,41 +10,48 @@ import useStore from '../store/store'
 
 const FilterModal = ({ visible, setSortModal }) => {
 
-  const { sortbyRatingHTL, sortbyRatingLTH, sortbyPriceHTL, sortbyPriceLTH, sortbyDeliveryTime, sortbyDistance, sortvalue } = useStore((state) => ({
+  const { sortbyRatingHTL, sortbyRatingLTH, sortbyPriceHTL, sortbyPriceLTH, sortbyDeliveryTime, sortbyDistance, sortvalue, setSortValue } = useStore((state) => ({
     sortbyRatingHTL: state.sortbyRatingHTL,
     sortbyRatingLTH: state.sortbyRatingLTH,
     sortbyPriceHTL: state.sortbyPriceHTL,
     sortbyPriceLTH: state.sortbyPriceLTH,
     sortbyDeliveryTime: state.sortbyDeliveryTime,
     sortbyDistance: state.sortbyDistance,
-    sortvalue: state.sortvalue
+    sortvalue: state.sortvalue,
+    setSortValue: state.setSortValue
   }))
 
   const [innitialValue, setInnitialValue] = useState(sortvalue)
 
-  useMemo(() => {
+  useEffect(() => {
     if (innitialValue === "RHTL") {
+      // setSortValue("RHTL")
       setSortModal(false)
       sortbyRatingHTL()
     }
     else if (innitialValue === "RLTH") {
+      // setSortValue("RLTH")
       setSortModal(false)
       sortbyRatingLTH()
     }
     else if (innitialValue === "PHTL") {
+      // setSortValue("PHTL")
       setSortModal(false)
       sortbyPriceHTL()
     }
     else if (innitialValue === "PLTH") {
+      // setSortValue("PLTH")
       setSortModal(false)
       sortbyPriceLTH()
     }
     else if (innitialValue === "DTLTH") {
+      // setSortValue("DTLTH")
       setSortModal(false)
       sortbyDeliveryTime()
     }
     else if (innitialValue === "DLTH") {
       sortbyDistance()
+      // setSortValue("DLTH")
       setSortModal(false)
     }
   }, [innitialValue])

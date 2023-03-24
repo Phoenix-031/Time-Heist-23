@@ -131,7 +131,7 @@ const ProfileScreen = () => {
           <Pressable style={{ flexDirection: "row", justifyContent: "flex-start", alignItems: "center", marginBottom: 15, gap: 10 }}
             onPress={() => {
               setUser(null)
-              navigation.navigate("Login")
+              navigation.navigate("Home")
             }}
           >
             <MaterialIcons name="logout" size={18} color="#ffad16" />

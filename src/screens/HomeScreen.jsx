@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native'
 
 import { RestaurantCard, FilterModal, LanguageModal, Cravings } from '../components'
 
-import { AntDesign, FontAwesome, Entypo, MaterialIcons } from '@expo/vector-icons'
+import { AntDesign, FontAwesome, Entypo, MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons'
 
 import useStore from '../store/store'
 
@@ -19,7 +19,7 @@ const HomeScreen = () => {
 
     const i18n = new I18n()
 
-    const {restaurantsList, cartItems, totalPrice, filters, setFilters, allfilters, locale, sortbyDistance, previous_orders, setPreviousOrders} = useStore((state) => ({
+    const {restaurantsList, cartItems, totalPrice, filters, setFilters, allfilters, locale, sortbyDistance, previous_orders, setPreviousOrders, user} = useStore((state) => ({
         restaurantsList: state.restaurantsList,
         cartItems: state.cartItems,
         totalPrice: state.totalPrice,
@@ -30,6 +30,7 @@ const HomeScreen = () => {
         sortbyDistance: state.sortbyDistance,
         previous_orders: state.previous_orders,
         setPreviousOrders: state.setPreviousOrders,
+        user: state.user
     }))
 
     i18n.fallbacks = true,
@@ -116,11 +117,16 @@ const HomeScreen = () => {
                     <Text style={{fontFamily:"Poppins-SemiBold", fontSize:16, color:"#e5e1d8"}}>Delivery</Text>
                 </Pressable>
 
-                <Pressable
-                    onPress={() => setLanguageModal((languagemodal) => !languagemodal)}
-                >
-                    <FontAwesome name="language" size={24} color="#e5e1d8" style={{ paddingVertical:5, paddingHorizontal:10, borderRadius:8, backgroundColor:"#1c1c27"}} />
-                </Pressable>
+                <View style={{flexDirection:"row", justifyContent:"center", alignItems:"center",gap:6}}>
+                    {user === null ? <MaterialCommunityIcons name="login-variant" size={24} color="white" 
+                    onPress={() => navigation.navigate('Login')}
+                     /> : null}
+                    <Pressable
+                        onPress={() => setLanguageModal((languagemodal) => !languagemodal)}
+                    >
+                        <FontAwesome name="language" size={24} color="#e5e1d8" style={{ paddingVertical:5, paddingHorizontal:10, borderRadius:8, backgroundColor:"#1c1c27"}} />
+                    </Pressable>
+                </View>
                 
             </View>
 
