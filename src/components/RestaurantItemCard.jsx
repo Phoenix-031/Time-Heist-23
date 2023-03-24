@@ -76,11 +76,14 @@ return (
                     }>{i18n.t("remove")}</Button>
                 ) : (
                         <Button style={{borderColor:"gray", borderWidth:1, borderRadius:10, marginTop:10}} textColor="#ef845d" 
-                        onPress = {() => {
-                            if(user === null){
-                                Alert.alert("Please login to continue")
-                                navigation.navigate("Login")
-                            }else {
+                        onPress = {
+                            // () => 
+                            // {
+                            // if(user === null){
+                            //     Alert.alert("Please login to continue")
+                            //     navigation.navigate("Login")
+                            // }else 
+                    // {
                         async() => {
                         // setLoading(true)
                         // console.log(loading)
@@ -142,9 +145,9 @@ return (
                         }
                         }
 
-                            }
+                            // }
                         }
-                    }
+                    // }
                         >{i18n.t("add")}</Button>
                 )
                 )
