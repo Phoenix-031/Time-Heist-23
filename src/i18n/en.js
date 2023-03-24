@@ -53,4 +53,11 @@ export const en = {
     "Veg":"Veg",
     "Non-Veg":"Non-Veg",
     "Bestseller":"Bestseller",
+    "Burger" : "Burger",
+    "Pizza" : "Pizza",
+    "Momo" : "Momo",
+    "Biryani" : "Biryani",
+    "Ice Cream" : "Ice Cream",
+    "Noodels" : "Noodels",
+    "Rolls" : "Rolls",
 }       

@@ -38,7 +38,7 @@ const Cravings = () => {
                                 }}
                                 >
                                     <Avatar.Image style={{ alignSelf:"center",}} size={60} source={{uri:item.image, cache: 'only-if-cached'}} />
-                                    <Text style={{color:"white"}}>{item.name}</Text>
+                                    <Text style={{color:"white"}}>i18n.t({item.name})</Text>
                                 </Pressable>
                     )}
                 />

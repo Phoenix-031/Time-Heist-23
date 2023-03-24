@@ -53,4 +53,11 @@ export const hi = {
     "Veg":"वेज़",
     "Non-Veg":"गैस नहीं",
     "Bestseller":"बेस्टसेलर",
+    "Burger":"बर्गर",
+    "Pizza":"पिज़्ज़ा",
+    "Rolls":"रोल",
+    "Biryani":"बिरयानी",
+    "Ice Cream":"आइस क्रीम",
+    "Noodles":"नूडल",
+    "Momo":"मोमो",
 }

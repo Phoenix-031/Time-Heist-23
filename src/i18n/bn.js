@@ -56,4 +56,11 @@ export const bn = {
         "Veg":"পশুপাখি",
         "Non-Veg":"অন-পশুপাখি",
         "Bestseller":"বেস্টসেলার",
+        "Burger":"বার্গার",
+        "Pizza":"পিজ্জা",
+        "Biryani":"বিরিয়ানি",
+        "Rolls":"রোল",
+        "Ice Cream":"আইস ক্রিম",
+        "Noodles":"নুডলস",
+        "Momo":"মোমো",
 }

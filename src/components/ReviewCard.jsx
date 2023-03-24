@@ -62,7 +62,7 @@ const ReviewCard = ({item}) => {
         <View style={{width:"100%", flexDirection:"row", justifyContent:"space-between" , alignContent:"center"}}>
             <View style={{flexDirection:"row",justifyContent:"center" ,alignItems:"center", gap:4}}>
                 <Entypo name="thumbs-up" size={20} color="#e5e1d8" />
-                <Text style={{color:"#e5e1d8",fontFamily:"Poppins-Medium", fontSize:15}}>{i18n.t("liked")}</Text>
+                <Text style={{color:"#e5e1d8",fontFamily:"Poppins-Medium", fontSize:15}}>{i18n.t("likes")}</Text>
             </View>
             <View style={{flexDirection:"row",justifyContent:"center" ,alignItems:"center", gap:4}}>
                 <Entypo name="message" size={20} color="#e5e1d8" />
