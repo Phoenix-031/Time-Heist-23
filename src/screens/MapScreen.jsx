@@ -17,13 +17,15 @@ export default function MapScreen() {
 
   const navigation = useNavigation()
 
-  const {cartItems,totalPrice, clearCart, setTotalPrice, addOrders, user} = useStore((state) => ({
+  const {cartItems,totalPrice, clearCart, setTotalPrice, addOrders, user, previous_orders, setPreviousOrders} = useStore((state) => ({
     cartItems: state.cartItems,
     totalPrice: state.totalPrice,
     clearCart: state.clearCart,
     setTotalPrice: state.setTotalPrice,
     addOrders: state.addOrders,
-    user: state.user
+    user: state.user,
+    previous_orders: state.previous_orders,
+    setPreviousOrders: state.setPreviousOrders,
   }))
 
 
@@ -48,7 +50,7 @@ export default function MapScreen() {
   useEffect(() => {
     (async() => {
        const readOnlyAddress = await Location.reverseGeocodeAsync(markerPosition);
-       console.log(readOnlyAddress[0]);
+      //  console.log(readOnlyAddress[0]);
        setAddress(readOnlyAddress[0]);
       setName(readOnlyAddress[0]?.name);
       setDistrict(readOnlyAddress[0]?.district);
@@ -94,6 +96,8 @@ export default function MapScreen() {
 
 
     const handleCheckout = async() => {
+      console.log("checkout")
+      console.log(cartItems)
     setLoadingPayement(true)
 
       const payamentIntent = await axios.post('https://foodiex-backend.onrender.com/api/payement/',
@@ -134,6 +138,7 @@ export default function MapScreen() {
       // console.log("success")
       // console.log(payementRes)
       setTotalPrice(0)
+      setPreviousOrders(cartItems[0].restaurant_name)
       Alert.alert("Success", "Your order has been placed")
       // console.log(
       //    cartItems,

@@ -40,7 +40,7 @@ const CartScreen = () => {
     setCartData(cartItems)
   }, [])
 
-  useMemo(() => {
+  useEffect(() => {
     setCartData(cartItems)
   }, [cartItems])
   

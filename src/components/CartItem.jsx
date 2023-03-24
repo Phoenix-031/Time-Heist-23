@@ -11,20 +11,21 @@ const CartItem = ({item}) => {
     const [quan,setQuan] = useState(Number(item.quantity))
     const image_uri = item.image_uri
 
-    const {cartItems, removeFromCart, incrementItem, decrementItem,setTotalPrice, totalPrice} = useStore((state) => ({
+    const {cartItems, removeFromCart, incrementItem, decrementItem,setTotalPrice, totalPrice, setQuantity} = useStore((state) => ({
         cartItems: state.cartItems,
         removeFromCart: state.removeFromCart,
         incrementItem: state.incrementItem,
         decrementItem: state.decrementItem,
         setTotalPrice: state.setTotalPrice,
         totalPrice: state.totalPrice,
+        setQuantity: state.setQuantity,
     }))
 
-    useMemo(() => {
+    useEffect(() => {
         if(!quan)
             removeFromCart(item.id)
         else
-            incrementItem(item.id,quan)
+            setQuantity(item.id,quan)
             
     }, [quan])
 
@@ -58,6 +59,7 @@ const CartItem = ({item}) => {
                 <Badge style={{backgroundColor:"#ffad16", borderRadius:5, color:"#000", fontSize:20, width: 30 ,height: 30, justifyContent:"center", alignItems:"center"}}
                 onPress={() => {
                     setQuan((quan) => quan + 1)
+                    // incrementItem(item.id,quan+1)
                     setTotalPrice(totalPrice + item.price)
                 }}
                 >+</Badge>

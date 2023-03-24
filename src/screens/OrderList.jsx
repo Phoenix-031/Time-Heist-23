@@ -19,6 +19,8 @@ const OrderList = () => {
         orders: state.orders
     }))
 
+    // console.log(orders)
+
     const [allorders,setAllorders] = useState(null)
 
     useEffect(() => {

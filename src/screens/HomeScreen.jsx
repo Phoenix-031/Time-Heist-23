@@ -19,7 +19,7 @@ const HomeScreen = () => {
 
     const i18n = new I18n()
 
-    const {restaurantsList, cartItems, totalPrice, filters, setFilters, allfilters, locale, sortbyDistance} = useStore((state) => ({
+    const {restaurantsList, cartItems, totalPrice, filters, setFilters, allfilters, locale, sortbyDistance, previous_orders, setPreviousOrders} = useStore((state) => ({
         restaurantsList: state.restaurantsList,
         cartItems: state.cartItems,
         totalPrice: state.totalPrice,
@@ -27,7 +27,9 @@ const HomeScreen = () => {
         setFilters: state.setFilters,
         allfilters: state.allfilters,
         locale: state.locale,
-        sortbyDistance: state.sortbyDistance
+        sortbyDistance: state.sortbyDistance,
+        previous_orders: state.previous_orders,
+        setPreviousOrders: state.setPreviousOrders,
     }))
 
     i18n.fallbacks = true,
@@ -69,6 +71,14 @@ const HomeScreen = () => {
                 }
                 if(item === "Pure Veg"){
                     const newData = data.filter((item) => item.special_tag === "Pure veg")
+                    setData(newData)
+                }
+                if(item == "New Arrivals"){
+                    const newData = data.filter((item) => item.arrival_tag === "New Arrivals")
+                    setData(newData)
+                }
+                if(item == "Previous Orders"){
+                    const newData = data.filter((item) => previous_orders.includes(item.restaurant_name))
                     setData(newData)
                 }
             })

@@ -67,24 +67,24 @@ return (
                 loading ? <ActivityIndicator size="large" color="#ef845d" style={{marginTop:"20%"}} /> :(
                 cartItems?.find((cartItem) => cartItem.id === item.id) ? (
                     <Button style={{backgroundColor:"#ffad16", marginTop:10, borderRadius:10, width:"100%", justifyContent:"center"}} onPress={() => {
-                        setLoading(true)
+                        // setLoading(true)
                         setTotalPrice(totalPrice - Number(item.price))
                         removeFromCart(item.id)
                         // console.log(totalPrice)
-                        setLoading(false)
+                        // setLoading(false)
                     }
                     }>{i18n.t("remove")}</Button>
                 ) : (
                         <Button style={{borderColor:"gray", borderWidth:1, borderRadius:10, marginTop:10}} textColor="#ef845d" 
                         onPress = {
-                            // () => 
-                            // {
-                            // if(user === null){
-                            //     Alert.alert("Please login to continue")
-                            //     navigation.navigate("Login")
-                            // }else 
-                    // {
-                        async() => {
+                            () => 
+                            {
+                            if(user === null){
+                                Alert.alert("Please login to continue")
+                                navigation.navigate("Login")
+                            }else 
+                    {
+                        (async() => {
                         // setLoading(true)
                         // console.log(loading)
 
@@ -131,7 +131,7 @@ return (
 
                         }else{
                             // console.log(totalPrice)
-                            setTotalPrice(Number(totalPrice) + Number(item.price))
+                            setTotalPrice(Number(item.price))
                             await addToCart({
                                 id: item.id,
                                 itemname: item.title,
@@ -143,11 +143,11 @@ return (
                             })
                             // setLoading(false)
                         }
-                        }
+                        })()
 
-                            // }
+                            }
                         }
-                    // }
+                    }
                         >{i18n.t("add")}</Button>
                 )
                 )
