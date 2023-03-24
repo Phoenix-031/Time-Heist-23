@@ -153,7 +153,9 @@ const HomeScreen = () => {
                         }else{
                             setFilters([...filters, item])
                         }
-                    }}><Text style={{color:`${filters.includes(item) ? "red" : "green"}`, fontFamily:"Poppins-SemiBold"}}>{i18n.t(item)}</Text>
+                    }}><Text style={{color:`${filters.includes(item) ? "red" : "green"}`, fontFamily:"Poppins-SemiBold"}}>{
+                        item === "Rating 4.0+" ? i18n.t("rating") : i18n.t(item)
+                    }</Text>
                     </TouchableOpacity>
                 )}
             />

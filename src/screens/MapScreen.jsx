@@ -17,12 +17,13 @@ export default function MapScreen() {
 
   const navigation = useNavigation()
 
-  const {cartItems,totalPrice, clearCart, setTotalPrice, addOrders} = useStore((state) => ({
+  const {cartItems,totalPrice, clearCart, setTotalPrice, addOrders, user} = useStore((state) => ({
     cartItems: state.cartItems,
     totalPrice: state.totalPrice,
     clearCart: state.clearCart,
     setTotalPrice: state.setTotalPrice,
     addOrders: state.addOrders,
+    user: state.user
   }))
 
 
@@ -203,7 +204,14 @@ export default function MapScreen() {
           <Text style={{fontFamily:"Poppins-SemiBold",color:"#ef845d", alignSelf:"center", paddingVertical:10}}>Confirm Delivery Location</Text>
           <Text style={{borderWidth:1, borderColor:"#ef845d",backgroundColor:"#28293d", color:"white", paddingVertical:10, paddingHorizontal:10,borderRadius:8}}>{name}, {district}, {city}: {postalcode}, {regadd}</Text>
           <Button  mode="contained" buttonColor='#28293d' textColor='white' style={{ marginVertical: 15, width: "70%", alignSelf: "center", paddingVertical: 8, fontSize: 20, fontFamily: "Poppins-SemiBold", color: "#ef845d" }}
-          onPress={handleCheckout}
+          onPress={
+            () => {
+              if(user === null)
+                navigation.navigate("Login")
+              else
+                {handleCheckout}
+            }
+          }
           >
           <Text style={{ fontSize: 15, fontFamily: "Poppins-SemiBold", color: "#ef845d" }}>Place Order</Text>
         </Button>

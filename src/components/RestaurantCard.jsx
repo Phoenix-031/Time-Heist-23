@@ -16,11 +16,12 @@ const RestaurantCard = ({item}) => {
     const navigation = useNavigation()
     const [heartcol, setheartcol] = React.useState('rgba(235, 235, 224,0.7)')
 
-    const {addLikedRestaurant, removeLikedRestaurant, likedRestaurants, locale} = useStore(state => ({
+    const {addLikedRestaurant, removeLikedRestaurant, likedRestaurants, locale, user} = useStore(state => ({
         addLikedRestaurant: state.addLikedRestaurant,
         removeLikedRestaurant: state.removeLikedRestaurant,
         likedRestaurants: state.likedRestaurants,
         locale: state.locale,
+        user: state.user
     }))
 
     const [fontsLoaded] = useFonts({
@@ -83,6 +84,9 @@ const RestaurantCard = ({item}) => {
 
       <AntDesign name="heart" size={24} color={heartcol} style={{position:"absolute", top:10, right:10,}} 
       onPress={()=>{
+        if(user === null){
+            navigation.navigate("Login")
+        }else {
           if(heartcol=="rgba(235, 235, 224,0.7)"){
               setheartcol("red")
               addLikedRestaurant(item)
@@ -92,6 +96,7 @@ const RestaurantCard = ({item}) => {
               setheartcol("rgba(235, 235, 224,0.7)")
               removeLikedRestaurant(item)
           }
+        }
       }}
       />
 

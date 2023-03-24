@@ -9,7 +9,21 @@ import { useNavigation, useIsFocused } from '@react-navigation/native';
 
 import useStore from '../store/store';
 
+import { I18n } from 'i18n-js'
+import { en, bn, hi } from '../i18n'
+
 const RestaurantScreen = ({ route }) => {
+
+  const i18n = new I18n()
+
+  const { locale } = useStore((state) => ({
+    locale: state.locale
+  }))
+
+  i18n.fallbacks = true,
+    i18n.translations = { en, bn, hi },
+    i18n.locale = locale
+
 
   const isfocused = useIsFocused()
 
@@ -114,7 +128,9 @@ const RestaurantScreen = ({ route }) => {
                 data={filters}
                 horizontal
                 renderItem={({ item }) => {
-                  return <Chip style={{ marginRight: 10, marginVertical: 10 }} >{item}</Chip>
+                  return <Chip style={{ marginRight: 10, marginVertical: 10 }} >
+                    {item === "Rating 4.0+" ? i18n.t("rating") : i18n.t(item)}
+                  </Chip>
                 }}
                 keyextractor={item => item.id}
               />

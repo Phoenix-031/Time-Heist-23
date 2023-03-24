@@ -12,6 +12,8 @@ import useStore from '../store/store'
 
 // import { expoClientId, androidClientId } from '../config/config'
 
+// import {androidClientId, expoClientId} from '@env'
+
 import * as WebBrowser from "expo-web-browser";
 import * as Google from "expo-auth-session/providers/google";
 
@@ -101,11 +103,11 @@ export default function App() {
           autoFocus
         /> */}
         <Button mode="contained" buttonColor='#28293d' textColor='white' style={{ marginVertical: 15, width: "70%", alignSelf: "center", paddingVertical: 8, fontSize: 20, fontFamily: "Poppins-SemiBold", color: "#ef845d" }}
-          onPress={() => navigation.navigate('OTP')}
-        ><Text style={{ fontSize: 15, fontFamily: "Poppins-SemiBold", color: "#ef845d" }}>Continue</Text></Button>
+          onPress={() => navigation.navigate('Home')}
+        ><Text style={{ fontSize: 15, fontFamily: "Poppins-SemiBold", color: "#ef845d" }}>Skip</Text></Button>
       </View>
 
-      <Text style={{ fontFamily: "Poppins-SemiBold", fontSize: 12, color: "white", paddingVertical: 10 }}>OR</Text>
+      {/* <Text style={{ fontFamily: "Poppins-SemiBold", fontSize: 12, color: "white", paddingVertical: 10 }}>OR</Text> */}
       <View style={styles.container}>
         {
            (

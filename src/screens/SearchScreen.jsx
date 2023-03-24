@@ -9,6 +9,8 @@ import { useFonts } from 'expo-font'
 
 const SearchScreen = ({route}) => {
 
+  console.log(route.params)
+
   const isfocused = useIsFocused()
   const [data, setData] = useState(null)
   const [searchQuery, setSearchQuery] = useState(null)
@@ -21,11 +23,13 @@ const SearchScreen = ({route}) => {
 
   useEffect(() => {
     if(isfocused){
+      console.log(route.params)
       if(route.params === undefined)
         setSearchQuery('')
       else
         setSearchQuery(route.params.data)
-    }
+    }else
+      setSearchQuery('')
   }, [isfocused])
 
   useEffect(() => {

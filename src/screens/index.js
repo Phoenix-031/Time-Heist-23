@@ -26,6 +26,7 @@ import DiningRestaurantCard from "../components/DiningRestaurantCard";
 import PopularDining from "../components/PopularDining";
 import OtpInput from "./OTP";
 import LikedRestaurantsScreen from "./LikedRestaurantsScreen";
+import WriteReview from "./WriteReview";
 
 export { HomeScreen, 
     DinningScreen, 
@@ -55,5 +56,6 @@ export { HomeScreen,
     DiningRestaurantCard, 
     PopularDining,
     LikedRestaurantsScreen,
+    WriteReview
 }
 

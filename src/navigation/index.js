@@ -14,6 +14,8 @@ import {
   LoginScreen, 
 } from "../screens";
 
+import useStore from "../store/store";
+
 import SearchScreenStack from "./SearchScreenStack";
 import OrderScreenStack from "./OrderScreenStack";
 import ProfileScreenStack from "./ProfileScreenStack";
@@ -23,6 +25,13 @@ import DinningScreenStack from "./DinningScreenStack";
 const Tab = createBottomTabNavigator();
 
 const RootNavigator = () => {
+
+
+  const { user } = useStore((state) => ({
+    user: state.user,
+    }))
+
+  
   return (
     <Tab.Navigator
       screenOptions={{
@@ -71,18 +80,45 @@ const RootNavigator = () => {
           )
         }}
       />
-
       <Tab.Screen
-        name="Cart"
-        component={CartScreenStack}
-        options={{
-          tabBarLabel: "",
-          tabBarIcon: ({ color }) => (
-            <FontAwesome5 name="shopping-cart" size={22} color={color} />
-          ),
-        }}
-      />
+          name="Cart"
+          component={CartScreenStack}
+          options={{
+            tabBarLabel: "",
+            tabBarIcon: ({ color }) => (
+              <FontAwesome5 name="shopping-cart" size={22} color={color} />
+            ),
+          }}
+        />
+        {
+          user && (
+            <>
 
+              <Tab.Screen
+                name="Profile"
+                component={ProfileScreenStack}
+                options={{
+                  tabBarLabel: "",
+                  tabBarIcon: ({ color }) => (
+                    <FontAwesome name="user" size={22} color={color} />
+                  )
+                }}
+              />
+
+              <Tab.Screen
+                name="Delivery"
+                component={OrderScreenStack}
+                options={{
+                  tabBarLabel: "",
+                  tabBarIcon: ({ color }) => (
+                    <MaterialIcons name="delivery-dining" size={35} color={color} />
+                  )
+                }}
+              />
+            </>
+          ) 
+        }
+{/*
       <Tab.Screen
         name="Profile"
         component={ProfileScreenStack}
@@ -92,9 +128,9 @@ const RootNavigator = () => {
             <FontAwesome name="user" size={22} color={color} />
           )
         }}
-      />
+      /> */}
 
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Delivery"
         component={OrderScreenStack}
         options={{
@@ -103,7 +139,7 @@ const RootNavigator = () => {
             <MaterialIcons name="delivery-dining" size={35} color={color} />
           )
         }}
-      />
+      /> */}
 
     </Tab.Navigator>
   )

@@ -44,10 +44,13 @@ export const en = {
     "kolkatabiriyanihouse":"Kolkata Biriyani House",
     "cart":"Cart",
     "Nearest":"Nearest",
-    "Rating 4.0+":"Rating 4.0+",
+    "rating":"Rating 4.0+",
     "Pure Veg":"Pure Veg",
     "New Arrivals":"New Arrivals",
     "Previous Orders":"Previous Orders",
     "Place Order":"Place Order",
-
+    "My Reviews": "My Reviews",
+    "Veg":"Veg",
+    "Non-Veg":"Non-Veg",
+    "Bestseller":"Bestseller",
 }       

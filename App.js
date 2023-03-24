@@ -22,17 +22,25 @@ import {
   FavouriteOrders,
   LikedRestaurantsScreen,
   UserProfile,
+  WriteReview,
  } from './src/screens';
 
+
+import useStore from './src/store/store';
 
 import { Entypo } from '@expo/vector-icons';
 
 import { StripeProvider } from '@stripe/stripe-react-native';
 
+
 const Stack = createNativeStackNavigator()
 
 
 export default function App() {
+
+const {user} = useStore((state) => ({
+  user: state.user,
+  }))
 
       const [fontsLoaded] = useFonts({
         'Poppins-Regular': require('./assets/fonts/Poppins-Regular.ttf'),
@@ -55,17 +63,36 @@ export default function App() {
           <Stack.Navigator
             initialRouteName='Login'
           >
-            <Stack.Screen name="Login" component={LoginScreen}
-              options={{
-                headerShown: false,
-              }}
-            />
+
+
+            {
+              user === null ? (
+                <>
+                  <Stack.Screen name="Login" component={LoginScreen}
+                    options={{
+                      headerShown: false,
+                    }}
+                  />
+                  <Stack.Screen name="Register" component={RegisterScreen}
+                    options={{
+                      headerShown: false,
+                    }}
+                  />
+                  <Stack.Screen name="OtpInput" component={OtpInput}
+                    options={{
+                      headerShown: false,
+                    }}
+                  />
+                </>
+              ) : (null)
+            }
+          
             <Stack.Screen name="Home" component={RootNavigator}
               options={{
                 headerShown: false,
               }}
             />
-            <Stack.Screen name="SignUp" component={RegisterScreen} />
+
             <Stack.Screen name="RestaurantScreen" component={RestaurantScreen}
               options={{
                 header: ({ navigation, route }) => {
@@ -113,6 +140,29 @@ export default function App() {
                 }
               }}
             />
+            <Stack.Screen name="WriteReview" component={WriteReview}
+              options={{
+                header: ({ navigation, route }) => {
+                  return (
+                    <View style={{
+                      backgroundColor: "#1c1c27",
+                      borderBottomWidth: 0,
+                      paddingHorizontal: 20,
+                      paddingTop: 20,
+                      flexDirection: "row",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
+                      gap: 6,
+                    }}>
+                      <Pressable
+                        onPress={() => navigation.goBack()}
+                      ><Entypo name="chevron-left" size={24} color="#e5e1d8" /></Pressable>
+                      <Text style={{ fontFamily: "Poppins-SemiBold", fontSize: 18, color: "#e5e1d8", paddingTop: 5 }}>{route.name}</Text>
+                    </View>
+                  )
+                }
+              }} />
+            
             <Stack.Screen name="OrderHistoryScreen" component={OrderList}
               options={{
                 header: ({ navigation, route }) => {

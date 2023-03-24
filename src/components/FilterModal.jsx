@@ -10,16 +10,17 @@ import useStore from '../store/store'
 
 const FilterModal = ({ visible, setSortModal }) => {
 
-  const { sortbyRatingHTL, sortbyRatingLTH, sortbyPriceHTL, sortbyPriceLTH, sortbyDeliveryTime, sortbyDistance, } = useStore((state) => ({
+  const { sortbyRatingHTL, sortbyRatingLTH, sortbyPriceHTL, sortbyPriceLTH, sortbyDeliveryTime, sortbyDistance, sortvalue } = useStore((state) => ({
     sortbyRatingHTL: state.sortbyRatingHTL,
     sortbyRatingLTH: state.sortbyRatingLTH,
     sortbyPriceHTL: state.sortbyPriceHTL,
     sortbyPriceLTH: state.sortbyPriceLTH,
     sortbyDeliveryTime: state.sortbyDeliveryTime,
     sortbyDistance: state.sortbyDistance,
+    sortvalue: state.sortvalue
   }))
 
-  const [innitialValue, setInnitialValue] = useState('first')
+  const [innitialValue, setInnitialValue] = useState(sortvalue)
 
   useMemo(() => {
     if (innitialValue === "RHTL") {
@@ -73,7 +74,7 @@ const FilterModal = ({ visible, setSortModal }) => {
         <Text style={{ fontFamily: "Poppins-Bold", color: "#ef845d", fontSize: 18, paddingVertical: 10 }}>Sort</Text>
 
         <ScrollView>
-          <RadioButton.Group onValueChange={newValue => setInnitialValue(newValue)} value="null">
+          <RadioButton.Group onValueChange={newValue => setInnitialValue(newValue)} value={innitialValue}>
             <Pressable style={{ paddingVertical: 10, paddingHorizontal: 10, flexDirection: "row", alignItems: "center" }}>
               <RadioButton value="RLTH" />
               <Text style={{ fontFamily: "Poppins-SemiBold", color: "#ef845d", fontSize: 15 }}>Rating: Low to High</Text>

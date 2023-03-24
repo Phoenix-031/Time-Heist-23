@@ -109,7 +109,7 @@ const ProfileScreen = () => {
             onPress={() => navigation.navigate("MyReviewsScreen")}
           >
             <Ionicons name="happy" size={20} color="#ffad16" />
-            <Text style={{ fontFamily: "Poppins-SemiBold", fontSize: 15, color: "#e5e1d8", paddingVertical:10 }}>My Reviews</Text>
+            <Text style={{ fontFamily: "Poppins-SemiBold", fontSize: 15, color: "#e5e1d8", paddingVertical:10 }}>{i18n.t("My Reviews")}</Text>
           </Pressable>
 
         </View>

@@ -3,6 +3,7 @@ import React from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { Searchbar, Button, Surface, Chip } from 'react-native-paper'
 import { useFonts } from 'expo-font'
+import { useNavigation } from '@react-navigation/native'
 
 import { ReviewCard } from '../components'
 
@@ -15,6 +16,12 @@ import useStore from '../store/store'
 
 const ReviewScreen = ({route}) => {
 
+  const {user} = useStore((state) => ({
+    user: state.user
+  }))
+
+  const navigation = useNavigation()
+  
     const i18n = new I18n()
 
     const {locale} = useStore((state) => ({
@@ -48,20 +55,12 @@ const ReviewScreen = ({route}) => {
 
         <Searchbar />
 
-        {/* <View horizontal style={{width:"100%", flexDirection:"row", justifyContent:"flex-start", alignItems:"center",paddingVertical:20}}>
-          <ScrollView horizontal>
-            <Chip style={{marginRight:8, backgroundColor:"#28293d"}} selectedColor="#ffad16" textStyle="Poppins-Medium">Verified</Chip>
-            <Chip style={{marginRight:8, backgroundColor:"#28293d"}} selectedColor="#ffad16" textStyle="Poppins-Medium">With Photos</Chip>
-            <Chip style={{marginRight:8, backgroundColor:"#28293d"}} selectedColor="#ffad16" textStyle="Poppins-Medium">Latest</Chip>
-            <Chip style={{marginRight:8, backgroundColor:"#28293d"}} selectedColor="#ffad16" textStyle="Poppins-Medium">Detailed Reviews</Chip>
-          </ScrollView>
-        </View> */}
-
       <FlatList
-      // style={{width:"100%", paddingVertical:20}}
+      style={{width:"100%", marginVertical:10}}
+        showsHorizontalScrollIndicator={false}
         horizontal={true}
         data={review_tags}
-        renderItem={({item}) => <Text style={{marginRight:8, backgroundColor:"#28293d", paddingVertical:10}} selectedColor="#ffad16" textStyle="Poppins-Medium">{item}</Text>}
+        renderItem={({item}) => <Text style={{marginRight:8, backgroundColor:"#28293d", color:"#ffad16", fontFamily:"Poppins-Medium",height:40,paddingHorizontal:10, borderRadius:12}}>{item}</Text>}
         keyExtractor={item => item}
       />
 
@@ -74,6 +73,14 @@ const ReviewScreen = ({route}) => {
 
       <Button mode='contained' style={{marginVertical:10, backgroundColor:"#ffad16", paddingVertical:6,}} uppercase textColor="white"
       contentStyle={{fontSize:25, fontFamily:"Poppins-Medium"}}
+      onPress = {
+        ()=> {
+          if(user === null)
+            navigation.navigate("Login")
+          else
+            navigation.navigate('WriteReview')
+        }
+      }
       >{i18n.t("write a review")}</Button>
       </View>
 

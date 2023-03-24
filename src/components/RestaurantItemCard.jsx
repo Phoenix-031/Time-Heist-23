@@ -5,6 +5,7 @@ import { ActivityIndicator, Button, Surface } from 'react-native-paper'
 import { Image } from 'react-native'
 
 import useStore from '../store/store'
+import { useNavigation } from '@react-navigation/native'
 
 import { useFonts } from 'expo-font'
 import Loading from './Loading'
@@ -14,9 +15,11 @@ import { en, bn, hi } from '../i18n'
 const RestaurantItemCard = ({item, restaurant_name, restaurant_image}) => {
 
     const i18n = new I18n()
+    const navigation = useNavigation()
 
-    const {locale} = useStore((state) => ({
-        locale: state.locale
+    const {locale, user} = useStore((state) => ({
+        locale: state.locale,
+        user: state.user
     }))
 
     i18n.fallbacks = true,
@@ -73,7 +76,12 @@ return (
                     }>{i18n.t("remove")}</Button>
                 ) : (
                         <Button style={{borderColor:"gray", borderWidth:1, borderRadius:10, marginTop:10}} textColor="#ef845d" 
-                        onPress = {async() => {
+                        onPress = {() => {
+                            if(user === null){
+                                Alert.alert("Please login to continue")
+                                navigation.navigate("Login")
+                            }else {
+                        async() => {
                         // setLoading(true)
                         // console.log(loading)
 
@@ -133,8 +141,9 @@ return (
                             // setLoading(false)
                         }
                         }
-                    
-                    
+
+                            }
+                        }
                     }
                         >{i18n.t("add")}</Button>
                 )
