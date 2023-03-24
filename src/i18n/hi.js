@@ -59,5 +59,5 @@ export const hi = {
     "Biryani":"बिरयानी",
     "Ice Cream":"आइस क्रीम",
     "Noodles":"नूडल",
-    "Momo":"मोमो",
+    "Momos":"मोमो",
 }

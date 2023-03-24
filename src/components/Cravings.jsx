@@ -6,8 +6,23 @@ import { userCravings } from '../data/userCravings'
 
 import { useNavigation } from '@react-navigation/native'
 
-const Cravings = () => {
+import {I18n} from 'i18n-js'
+import { en, bn, hi } from '../i18n'    
 
+import useStore from '../store/store'
+
+const Cravings = () => {
+    
+    const {locale} = useStore((state) => ({
+        locale: state.locale
+    }))
+
+    const i18n = new I18n()
+    i18n.fallbacks = true,
+    i18n.translations = {en, bn, hi},
+    i18n.locale = locale
+
+    
     const navigation = useNavigation()
 
     const [cravings, setCravings] = useState('')
@@ -38,7 +53,7 @@ const Cravings = () => {
                                 }}
                                 >
                                     <Avatar.Image style={{ alignSelf:"center",}} size={60} source={{uri:item.image, cache: 'only-if-cached'}} />
-                                    <Text style={{color:"white"}}>i18n.t({item.name})</Text>
+                                    <Text style={{color:"white"}}>{i18n.t(item.name)}</Text>
                                 </Pressable>
                     )}
                 />

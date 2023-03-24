@@ -209,7 +209,7 @@ export default function MapScreen() {
               if(user === null)
                 navigation.navigate("Login")
               else
-                {handleCheckout}
+                {handleCheckout()}
             }
           }
           >

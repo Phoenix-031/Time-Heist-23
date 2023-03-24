@@ -62,5 +62,5 @@ export const bn = {
         "Rolls":"রোল",
         "Ice Cream":"আইস ক্রিম",
         "Noodles":"নুডলস",
-        "Momo":"মোমো",
+        "Momos":"মোমো",
 }

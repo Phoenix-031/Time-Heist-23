@@ -55,7 +55,7 @@ export const en = {
     "Bestseller":"Bestseller",
     "Burger" : "Burger",
     "Pizza" : "Pizza",
-    "Momo" : "Momo",
+    "Momos" : "Momo",
     "Biryani" : "Biryani",
     "Ice Cream" : "Ice Cream",
     "Noodels" : "Noodels",
