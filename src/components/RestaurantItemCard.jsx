@@ -80,8 +80,20 @@ return (
                             () => 
                             {
                             if(user === null){
-                                Alert.alert("Please login to continue")
-                                navigation.navigate("Login")
+
+                                Alert.alert(
+                                    "Please login to continue",
+                                    "do you want to login?",
+                                    [
+                                        {
+                                            text: "Cancel",
+                                            onPress: () => console.log("Cancel Pressed"),
+                                            style: "cancel"
+                                        },
+                                        { text: "OK", onPress: () => navigation.navigate("Login") }
+                                    ]
+                                )
+                                // navigation.navigate("Login")
                             }else 
                     {
                         (async() => {
