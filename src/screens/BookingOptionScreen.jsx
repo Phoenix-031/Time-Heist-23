@@ -1,11 +1,16 @@
 import React,{ useState } from 'react';
-import { Text, View, StyleSheet,ScrollView, TouchableOpacity} from 'react-native';
+import { Text, View, StyleSheet,ScrollView, TouchableOpacity, Alert} from 'react-native';
 import Constants from 'expo-constants';
 import { useFonts } from 'expo-font';
 import { Button } from 'react-native-paper';
 
+import { useNavigation } from '@react-navigation/native';
+
   
-export default function BookingOptionScreen(){
+export default function BookingOptionScreen({route}){
+  // console.log(route.params.item)
+
+  const navigation=useNavigation();
   
 
         const days = ['Today', 'Tomorrow', 'Friday', 'Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
@@ -37,7 +42,7 @@ export default function BookingOptionScreen(){
   
   return (
     <View style={styles.container}>
-      <Text style={styles.restaurantname}>TGI FRIDAYS</Text>
+      <Text style={styles.restaurantname}>{route.params.item.restaurant_name}</Text>
       <Text style={styles.restaurantplace}>Elgin,Kolkata</Text>
       <Text style={styles.step1}>Step 1 of 2: Select Date and Time</Text>
       <ScrollView scrollEventThrottle={16}>
@@ -91,7 +96,20 @@ export default function BookingOptionScreen(){
   </ScrollView>
 </View>
     </ScrollView> 
-    <Button mode="contained">Book</Button>
+    <Button mode="contained"
+    onPress={() => {
+      Alert.alert(
+        "Booking Confirmed",
+        "Your booking has been confirmed. You will receive a confirmation email shortly.",
+        [
+          {
+            text: "OK",
+            onPress: () => navigation.navigate('Home')
+          }
+        ]
+      );
+    }}
+    >Book</Button>
     </View>
   );
 }

@@ -58,7 +58,7 @@ export default function BookingScreen({route}) {
 
             <View style={{width:"100%", flexDirection:"row", justifyContent:"space-around", alignItems:"center"}}>
               <Button 
-               onPress={() => navigation.navigate("BookingOptionScreen")}
+               onPress={() => navigation.navigate("BookingOptionScreen",{item:route.params.item})}
                style={{paddingVertical:5, paddingHorizontal:10, borderWidth:1, borderColor:"#ef845d", borderRadius:10}}
                textColor="#ffad16"
                fontFamily="Poppins-Medium"
