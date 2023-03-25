@@ -10,9 +10,9 @@ import { useFonts } from "expo-font";
 
 export default function BookingScreen({route}) {
 
-  console.log(route)
+  // console.log(route)
   const navigation =  useNavigation()
-  // const { restaurant_name, rating, distance, reviews, cusines, filters, res_items, restaurant_image } = route.params.item;
+  const { restaurant_name, rating, distance, reviews, cusines, filters, res_items, restaurant_image } = route.params.item;
 
       const [fontsLoaded] = useFonts({
         'Poppins-Regular': require('../../assets/fonts/Poppins-Regular.ttf'),
@@ -31,7 +31,7 @@ export default function BookingScreen({route}) {
   return (
 
     <SafeAreaProvider style={{ backgroundColor: "#1c1c27", width: "100%", height: "100%", flexDirection: "column", justifyContent: "flex-start", alignItems: "center", paddingTop: 15 }}>
-               {/* <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", borderRadius: 12, marginBottom: 10, backgroundColor: "#28293d", }}>
+               <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", borderRadius: 12, marginBottom: 10, backgroundColor: "#28293d", }}>
 
               <View style={{ paddingHorizontal: 10, paddingVertical: 15, flex: 3, }}>
                 <Text style={{ fontFamily: "Poppins-Bold", fontSize: 18, color: "#e5e1d8" }}>{restaurant_name}</Text>
@@ -54,7 +54,7 @@ export default function BookingScreen({route}) {
                 </View>
               </Pressable>
 
-            </View> */}
+            </View>
 
             <View style={{width:"100%", flexDirection:"row", justifyContent:"space-around", alignItems:"center"}}>
               <Button 

@@ -58,7 +58,11 @@ const {user} = useStore((state) => ({
       return null
 
   return (
-    <StripeProvider publishableKey='pk_test_51MnT0pSBE9PwAuPZOpvhaH0QAMlHm7uSXuZgI84HyrK3N4UyKu9QESQJQjL7PBZjWz6bSERWthF7zN6gQxRtoyT900geCkrQiW'>
+    <StripeProvider 
+    publishableKey='pk_test_51MnT0pSBE9PwAuPZOpvhaH0QAMlHm7uSXuZgI84HyrK3N4UyKu9QESQJQjL7PBZjWz6bSERWthF7zN6gQxRtoyT900geCkrQiW'
+    merchantIdentifier='merchant.com.Foodiez'
+    urlScheme='https://auth.expo.io/'
+    >
       <PaperProvider>
         <NavigationContainer>
 
@@ -360,6 +364,7 @@ const {user} = useStore((state) => ({
                 headerShown: true,
                 header: ({ navigation, route }) => {
                   // console.log(route, navigation)
+                  // console.log(route.params)
                   return (
                     <View style={{
                       backgroundColor: "#1c1c27",
@@ -374,7 +379,7 @@ const {user} = useStore((state) => ({
                       <Pressable
                         onPress={() => navigation.goBack()}
                       ><Entypo name="chevron-left" size={24} color="#e5e1d8" /></Pressable>
-                      <Text style={{ fontFamily: "Poppins-SemiBold", fontSize: 18, color: "#e5e1d8", paddingTop: 5 }}>Book a table</Text>
+                      <Text style={{ fontFamily: "Poppins-SemiBold", fontSize: 18, color: "#e5e1d8", paddingTop: 5 }}>{route.params.item.restaurant_name}</Text>
                     </View>
                   )
                 }

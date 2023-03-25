@@ -28,7 +28,6 @@ export default function MapScreen() {
     setPreviousOrders: state.setPreviousOrders,
   }))
 
-
    const [loadingpayement, setLoadingPayement] = useState(false)
    const [payement,setPayement] = useState()
 
@@ -116,7 +115,18 @@ export default function MapScreen() {
     
     const initResponse = await initPaymentSheet({
       merchantDisplayName: 'Foodiez',
+      customerId: res.cusomer,
       paymentIntentClientSecret: res.client_secret,
+      customerEphemeralKeySecret: res.ephermalKey,
+      defaultBillingDetails:{
+        email: user.email,
+        name: user.name,
+        address:{
+          city: address.city,
+          country: address.country,
+          line2: address.district,
+        },
+      },
     })
 
     if(initResponse.error){
