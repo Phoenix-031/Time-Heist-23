@@ -112,7 +112,9 @@ export default function MapScreen() {
     const res =  payamentIntent.data
     // console.log(res)
     setPayement(res)
-    
+    // (async ()=>{
+      
+    // })
     const initResponse = await initPaymentSheet({
       merchantDisplayName: 'Foodiez',
       customerId: res.cusomer,
@@ -128,6 +130,8 @@ export default function MapScreen() {
         },
       },
     })
+
+    console.log(initResponse)
 
     if(initResponse.error){
       console.log("error")
